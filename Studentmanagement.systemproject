@@ -1,0 +1,110 @@
+students = []
+
+while True:
+
+    print("\n===== STUDENT MANAGEMENT SYSTEM =====")
+    print("1. Add student")
+    print("2. View student")
+    print("3. Search student")
+    print("4. Exit")
+    choosing_choice = int(input("Enter your choice: "))
+
+    # ADD STUDENT
+    if choosing_choice == 1:
+
+        print("\n===== ADD STUDENT =====")
+
+        name = input("Enter your name: ")
+        roll_number = int(input("Enter your roll number: "))
+        branch = input("Enter your branch: ")
+
+        print("\nEnter marks for 5 subjects:")
+
+        marks1 = float(input("Subject 1: "))
+        marks2 = float(input("Subject 2: "))
+        marks3 = float(input("Subject 3: "))
+        marks4 = float(input("Subject 4: "))
+        marks5 = float(input("Subject 5: "))
+
+        total_marks = marks1 + marks2 + marks3 + marks4 + marks5
+        percentage = total_marks / 5
+
+        if percentage >= 90:
+            grade = "A+"
+        elif percentage >= 80:
+            grade = "A"
+        elif percentage >= 70:
+            grade = "B"
+        elif percentage >= 60:
+            grade = "C"
+        elif percentage >= 50:
+            grade = "D"
+        else:
+            grade = "F"
+
+        student = {
+            "name": name,
+            "roll_number": roll_number,
+            "branch": branch,
+            "total_marks": total_marks,
+            "percentage": percentage,
+            "grade": grade
+        }
+
+        students.append(student)
+
+        print("\nStudent added successfully!")
+
+
+    # VIEW STUDENT
+    elif choosing_choice == 2:
+
+        print("\n===== VIEW STUDENT =====")
+
+        if len(students) == 0:
+            print("No students found.")
+
+        else:
+            for student in students:
+                print("\nName:", student["name"])
+                print("Roll number:", student["roll_number"])
+                print("Branch:", student["branch"])
+                print("Total marks:", student["total_marks"])
+                print("Percentage:", student["percentage"])
+                print("Grade:", student["grade"])
+
+
+    # SEARCH STUDENT
+    elif choosing_choice == 3:
+
+        print("\n===== SEARCH STUDENT =====")
+
+        name = input("Enter the student name: ")
+
+        found = False
+
+        for student in students:
+
+            if student["name"] == name:
+
+                print("\nStudent found!")
+                print("Name:", student["name"])
+                print("Roll number:", student["roll_number"])
+                print("Branch:", student["branch"])
+                print("Total marks:", student["total_marks"])
+                print("Percentage:", student["percentage"])
+                print("Grade:", student["grade"])
+
+                found = True
+                break
+
+        if found == False:
+            print("Student not found.")
+
+
+    # EXIT
+    elif choosing_choice == 4:
+
+        print("\nThank you for using Student Management System!")
+        break
+
